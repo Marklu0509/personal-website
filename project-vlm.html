@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VLM Fine-Tuning &amp; LLM-as-Judge Pipeline — Mark Lu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <!-- Green hero band -->
+  <div class="band-peach proj-band">
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="index.html">Mark Lu</a>
+        <div class="nav-right">
+          <div class="links">
+            <a href="index.html">About</a><span class="sep">|</span>
+            <a href="index.html#experience">Experience</a><span class="sep">|</span>
+            <a href="projects.html" class="active">Projects</a>
+          </div>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="wrap proj-hero detail-hero">
+      <p class="headline">VLM Fine-Tuning &amp; LLM-as-Judge Pipeline</p>
+      <p class="proj-sub">A research pipeline that fine-tunes a vision-language model to describe images faithfully, paired with an automated "LLM-as-judge" system that measures how trustworthy those descriptions really are.</p>
+    </section>
+  </div>
+
+  <!-- White content -->
+  <main class="wrap">
+    <section class="detail">
+      <div class="detail-info">
+        <h2 class="detail-title">Project Info</h2>
+        <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
+        <div class="fact"><span class="k">Team</span><span class="v">University research collaboration — 8 people</span></div>
+        <div class="fact"><span class="k">Stack</span><span class="v">Python, PyTorch, LLaMA-Factory, vLLM, LoRA, Qwen3-VL, ArtcomBench</span></div>
+        <a class="detail-btn filled" href="https://github.com/Marklu0509" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="detail-btn outline" href="projects.html">Go back</a>
+      </div>
+
+      <div class="detail-main">
+        <figure class="detail-figure">
+          <div class="detail-shot c6"></div>
+          <figcaption>Benchmark comparison &mdash; baselines vs fine-tuned</figcaption>
+        </figure>
+        <div class="prose">
+          <p><strong>LoRA fine-tuning</strong> produced a model that beat all three baselines &mdash; including a 2025 state-of-the-art model &mdash; on every faithfulness metric, trained on a single GPU in under three hours.</p>
+          <p>To make "how trustworthy is this output" measurable and reproducible, I helped build <strong>ArtcomBench</strong>, a custom LLM-as-judge benchmark, and validated 3,500 AI-generated labels against human raters (ICC 0.82) before training. The result is quality you can quantify, not just claim.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Olive footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Mark Lu</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

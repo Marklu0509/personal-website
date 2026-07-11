@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real-Time Automation &amp; Monitoring Service — Mark Lu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <!-- Green hero band -->
+  <div class="band-peach proj-band">
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="index.html">Mark Lu</a>
+        <div class="nav-right">
+          <div class="links">
+            <a href="index.html">About</a><span class="sep">|</span>
+            <a href="index.html#experience">Experience</a><span class="sep">|</span>
+            <a href="projects.html" class="active">Projects</a>
+          </div>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="wrap proj-hero detail-hero">
+      <p class="headline">Real-Time Automation &amp; Monitoring Service</p>
+      <p class="proj-sub">A 24/7 automation service that ingests a live event feed, processes every event reliably, and continuously monitors its own health to surface incidents within seconds.</p>
+    </section>
+  </div>
+
+  <!-- White content -->
+  <main class="wrap">
+    <section class="detail">
+      <div class="detail-info">
+        <h2 class="detail-title">Project Info</h2>
+        <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
+        <div class="fact"><span class="k">Access</span><span class="v">Private service — walkthrough on request</span></div>
+        <div class="fact"><span class="k">Stack</span><span class="v">Python, Docker &amp; Compose, Nginx, Prometheus, Grafana, PostgreSQL, GitHub Actions, Linux VPS</span></div>
+        <a class="detail-btn outline" href="projects.html">Go back</a>
+      </div>
+
+      <div class="detail-main">
+        <figure class="detail-figure">
+          <div class="detail-shot c5"></div>
+          <figcaption>The Grafana monitoring dashboard</figcaption>
+        </figure>
+        <div class="prose">
+          <p>The service guarantees <strong>exactly-once processing</strong> across restarts using database-level idempotency, so no event is ever lost or double-counted. I also raised the request success rate from <strong>71% to 99.7%</strong> by reverse-engineering a hidden upstream API rule from structured logs.</p>
+          <p>On the operations side, Prometheus/Grafana alerting cut incident detection from hours to <strong>under 90 seconds</strong> &mdash; firing even when the process crashes &mdash; and releases are automated behind an 85-test gate. Monitoring is version-controlled as code, so dashboards, alerts, and routing are reproducible.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Olive footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Mark Lu</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

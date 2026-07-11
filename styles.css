@@ -486,6 +486,7 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 .about-page .ap-hero,
 .about-page .proj-hero,
 .about-page .recent,
+.about-page .detail,
 .about-page .row,
 .about-page .knock .inner {
   grid-template-columns:
@@ -496,6 +497,7 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 .about-page .ap-hero .jumpto,
 .about-page .row-head,
 .about-page .recent-head,
+.about-page .detail-info,
 .about-page .knock .inner > div:first-child { padding-left: var(--indent); }
 
 /* Projects page — About-style numbered rows */
@@ -509,7 +511,7 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 .about-page .recent-head h2 { font-size: 16px; font-weight: 500; letter-spacing: 0; color: #3E3F05; margin: 0; }
 .about-page .recent-list { grid-column: 2; display: flex; flex-direction: column; gap: 40px; }
 .about-page .pcard {
-  display: block; text-decoration: none; color: var(--ink);
+  display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
   background: #EEF1EE; border-radius: 0; padding: 22px;
   transition: transform 0.2s ease;
 }
@@ -521,15 +523,49 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 .about-page .pcard .pcard-img.c1 { background: linear-gradient(150deg,#5c6f5b,#31402f); }
 .about-page .pcard .pcard-img.c2 { background: linear-gradient(150deg,#c8721f,#5f3410); }
 .about-page .pcard .pcard-img.c3 { background: linear-gradient(150deg,#eaa24a,#dd7d2c); }
+.about-page .pcard .pcard-img.c4 { background: linear-gradient(150deg,#8a9472,#4f5a3e); }
+.about-page .pcard .pcard-img.c5 { background: linear-gradient(150deg,#cf4a2c,#8f2c1c); }
 .about-page .pcard .pcard-img.c6 { background: linear-gradient(150deg,#3a4a63,#232f44); }
-.about-page .pcard .pcard-title { font-size: 20px; font-weight: 400; letter-spacing: -0.01em; margin: 0 0 12px; }
-.about-page .pcard .pcard-desc { font-size: 16px; line-height: 24px; color: var(--ink-soft); margin: 0 0 28px; }
-.about-page .pcard .pcard-foot { display: flex; align-items: center; justify-content: space-between; }
+.about-page .pcard .pcard-title { font-size: 20px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.25; min-height: 2.5em; margin: 0 0 12px; }
+.about-page .pcard .pcard-desc { font-size: 16px; line-height: 24px; color: var(--ink-soft); min-height: 120px; margin: 0 0 24px; }
+.about-page .pcard .pcard-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
 .about-page .pcard .pcard-tag {
   font-size: 14px; color: var(--ink-soft);
   border: 1px solid var(--line-strong); border-radius: 0; padding: 4px 8px;
 }
 .about-page .pcard .pcard-arrow { font-size: 18px; color: var(--ink); }
+
+/* Project detail page — left info column + right image/body */
+.about-page .detail-hero .proj-sub { max-width: 46ch; }
+.about-page .detail { display: grid; column-gap: var(--gap); padding-top: 56px; padding-bottom: 90px; }
+.about-page .detail-info { grid-column: 1; display: flex; flex-direction: column; gap: 26px; }
+.about-page .detail-info .detail-title { font-size: 16px; font-weight: 600; letter-spacing: 0; margin: 0; color: var(--ink); }
+.about-page .detail-info .fact { gap: 5px; }
+.about-page .detail-info .fact .k { font-size: 16px; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.about-page .detail-info .fact .v { font-size: 16px; color: var(--ink-soft); }
+.about-page .detail-info .detail-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  align-self: flex-start; white-space: nowrap; padding: 8px 16px;
+  font-size: 16px; font-weight: 500; text-decoration: none; color: #686E64;
+  border-radius: 0; border: 1px solid transparent;
+}
+.about-page .detail-info .detail-btn.filled { background: #EEF1EE; }
+.about-page .detail-info .detail-btn.filled:hover { background: #e3e7e3; }
+.about-page .detail-info .detail-btn.outline { border-color: #686E64; background: transparent; }
+.about-page .detail-info .detail-btn.outline:hover { background: rgba(104,110,100,0.08); }
+/* Button arrows — change these two symbols to restyle every button at once */
+.about-page .detail-info .detail-btn.filled::after { content: "\2B67"; font-size: 17px; line-height: 1; }
+.about-page .detail-info .detail-btn.outline::before { content: "\2B60"; font-size: 17px; line-height: 1; order: -1; }
+.about-page .detail-main { grid-column: 2; display: flex; flex-direction: column; gap: 44px; }
+.about-page .detail-figure { margin: 0; }
+.about-page .detail-figure .detail-shot { width: 100%; aspect-ratio: 16 / 10; border-radius: 0; background: linear-gradient(150deg,#c8721f,#5f3410); }
+.about-page .detail-figure .detail-shot.c1 { background: linear-gradient(150deg,#5c6f5b,#31402f); }
+.about-page .detail-figure .detail-shot.c2 { background: linear-gradient(150deg,#c8721f,#5f3410); }
+.about-page .detail-figure .detail-shot.c3 { background: linear-gradient(150deg,#eaa24a,#dd7d2c); }
+.about-page .detail-figure .detail-shot.c4 { background: linear-gradient(150deg,#8a9472,#4f5a3e); }
+.about-page .detail-figure .detail-shot.c5 { background: linear-gradient(150deg,#cf4a2c,#8f2c1c); }
+.about-page .detail-figure .detail-shot.c6 { background: linear-gradient(150deg,#3a4a63,#232f44); }
+.about-page .detail-figure figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
 
 /* Dark-green projects hero band */
 .about-page .proj-band { background: #3B3D02; min-height: 489px; display: flex; flex-direction: column; }

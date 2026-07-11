@@ -6,56 +6,47 @@
 <title>MediaJira Campaign Workflow — Mark Lu</title>
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="wrap">
-    <nav class="site-nav">
-      <a class="brand" href="index.html">Mark Lu</a>
-      <div class="links">
-        <a href="index.html">About</a><span class="sep">|</span>
-        <a href="experience.html">Experience</a><span class="sep">|</span>
-        <a href="projects.html" class="active">Projects</a>
-      </div>
-      <a class="btn" href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="wrap detail-head">
-      <a class="backlink" href="projects.html">&larr; All projects</a>
-      <p class="eyebrow">Internship &middot; Full-stack</p>
-      <h1 style="max-width: 20ch;">MediaJira Campaign Workflow</h1>
-      <div class="detail-meta">
-        <div class="fact"><span class="k">Role</span><span class="v">Software Engineer Intern</span></div>
-        <div class="fact"><span class="k">Year</span><span class="v">2024</span></div>
-        <div class="fact"><span class="k">Stack</span><span class="v">React, Django, Docker</span></div>
-      </div>
-    </section>
-
-    <section class="wrap">
-      <div class="hero-image">
-        <!-- Replace with a screenshot: set background: url('mediajira.png') center/cover -->
-      </div>
-    </section>
-
-    <section class="wrap section" style="border-top: none; padding-top: 0;">
-      <div class="detail-body">
-        <div class="aside">
-          <div class="block">
-            <div class="k">Context</div>
-            A media platform where teams plan and track advertising campaigns.
+<body class="about-page">
+  <!-- Green hero band -->
+  <div class="band-peach proj-band">
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="index.html">Mark Lu</a>
+        <div class="nav-right">
+          <div class="links">
+            <a href="index.html">About</a><span class="sep">|</span>
+            <a href="index.html#experience">Experience</a><span class="sep">|</span>
+            <a href="projects.html" class="active">Projects</a>
           </div>
-          <div class="block">
-            <div class="k">My focus</div>
-            Full-stack feature delivery and developer tooling.
-          </div>
-          <div class="block">
-            <div class="k">Team</div>
-            Small agile squad, weekly reviews.
-          </div>
+          <a class="btn" href="index.html#contact">Contact</a>
         </div>
+      </nav>
+    </header>
 
+    <section class="wrap proj-hero detail-hero">
+      <p class="headline">MediaJira Campaign Workflow</p>
+      <p class="proj-sub">Full-stack features and CI tooling for a media campaign platform &mdash; API endpoints wired into a React interface, a containerised dev environment, and integration tests around the flows most likely to break.</p>
+    </section>
+  </div>
+
+  <!-- White content -->
+  <main class="wrap">
+    <section class="detail">
+      <div class="detail-info">
+        <h2 class="detail-title">Project Info</h2>
+        <div class="fact"><span class="k">Date</span><span class="v">2024</span></div>
+        <div class="fact"><span class="k">Stack</span><span class="v">React, Django, Docker, CI/CD, AWS</span></div>
+        <a class="detail-btn filled" href="#">Visit the website</a>
+        <a class="detail-btn outline" href="projects.html">Go back</a>
+      </div>
+
+      <div class="detail-main">
+        <figure class="detail-figure">
+          <div class="detail-shot c2"></div>
+          <figcaption>Campaign workflow &mdash; planning dashboard</figcaption>
+        </figure>
         <div class="prose">
-          <p>I joined the campaign workflow team to help ship features that connected the planning interface to the underlying data model. Most of my work sat across the full stack &mdash; designing API endpoints, wiring them into the React interface, and keeping the data flow easy to follow.</p>
+          <p>MediaJira is a media platform where teams plan and track advertising campaigns. I joined the campaign workflow team to help ship features that connected the planning interface to the underlying data model. Most of my work sat across the full stack &mdash; designing API endpoints, wiring them into the React interface, and keeping the data flow easy to follow.</p>
           <p>Alongside features, I invested in the parts of the codebase that make change cheaper: <strong>containerising the dev environment</strong> so setup took minutes instead of an afternoon, and adding <strong>CI checks and integration tests</strong> around the flows most likely to break.</p>
           <p>The lesson I took away was about scope. The most useful thing I did some weeks wasn't a feature at all &mdash; it was removing a step, a config, or a manual process that everyone had quietly accepted.</p>
         </div>
@@ -63,25 +54,9 @@
     </section>
   </main>
 
+  <!-- Olive footer -->
   <footer class="site-footer">
     <div class="wrap">
-      <div class="footer-top">
-        <div class="footer-col">
-          <span class="h">Pages</span>
-          <a href="index.html">About</a>
-          <a href="experience.html">Experience</a>
-          <a href="projects.html">Projects</a>
-        </div>
-        <div class="footer-col">
-          <span class="h">Elsewhere</span>
-          <a href="#">GitHub</a>
-          <a href="#">LinkedIn</a>
-        </div>
-        <div class="footer-col">
-          <span class="h">Get in touch</span>
-          <a href="mailto:marklu0509@gmail.com">marklu0509@gmail.com</a>
-        </div>
-      </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Mark Lu</span>
       </div>

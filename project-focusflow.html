@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FocusFlow — Mark Lu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <!-- Green hero band -->
+  <div class="band-peach proj-band">
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="index.html">Mark Lu</a>
+        <div class="nav-right">
+          <div class="links">
+            <a href="index.html">About</a><span class="sep">|</span>
+            <a href="index.html#experience">Experience</a><span class="sep">|</span>
+            <a href="projects.html" class="active">Projects</a>
+          </div>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="wrap proj-hero detail-hero">
+      <p class="headline">FocusFlow, A Pomodoro Clock</p>
+      <p class="proj-sub">A full-stack focus-timer platform that helps people work in structured sessions and track their productivity over time &mdash; available as both a web app and a browser extension.</p>
+    </section>
+  </div>
+
+  <!-- White content -->
+  <main class="wrap">
+    <section class="detail">
+      <div class="detail-info">
+        <h2 class="detail-title">Project Info</h2>
+        <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
+        <div class="fact"><span class="k">Stack</span><span class="v">TypeScript, NestJS, Go, Next.js / React, PostgreSQL, Caddy, Docker, GitHub Actions, AWS EC2, Chrome MV3, JWT</span></div>
+        <a class="detail-btn filled" href="https://pomodoro.marklu.page" target="_blank" rel="noopener">Visit the website</a>
+        <a class="detail-btn outline" href="projects.html">Go back</a>
+      </div>
+
+      <div class="detail-main">
+        <figure class="detail-figure">
+          <div class="detail-shot c1"></div>
+          <figcaption>The live focus-session timer</figcaption>
+        </figure>
+        <div class="prose">
+          <p>FocusFlow splits its backend by workload: a <strong>NestJS write API</strong> handles session data, while a separate <strong>Go service</strong> takes the read-heavy analytics, so each side scales on its own. An API-first design means the same backend powers both the Next.js web app and the Chrome extension &mdash; adding a new client needs zero backend change.</p>
+          <p>Stateless <strong>JWT auth</strong> removed the need for a session store, and one-push <strong>CI/CD via GitHub Actions</strong> builds in CI so even a small EC2 host ships reliably. <strong>Caddy</strong> fronts the whole stack as a reverse proxy with automatic HTTPS.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Olive footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Mark Lu</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

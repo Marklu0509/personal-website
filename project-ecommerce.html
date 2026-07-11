@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributed E-Commerce Microservices — Mark Lu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <!-- Green hero band -->
+  <div class="band-peach proj-band">
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="index.html">Mark Lu</a>
+        <div class="nav-right">
+          <div class="links">
+            <a href="index.html">About</a><span class="sep">|</span>
+            <a href="index.html#experience">Experience</a><span class="sep">|</span>
+            <a href="projects.html" class="active">Projects</a>
+          </div>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="wrap proj-hero detail-hero">
+      <p class="headline">Distributed E-Commerce Microservices</p>
+      <p class="proj-sub">A distributed e-commerce backend where independent services (store, bank, delivery, email) coordinate a single order reliably over messaging, staying consistent even when individual services fail.</p>
+    </section>
+  </div>
+
+  <!-- White content -->
+  <main class="wrap">
+    <section class="detail">
+      <div class="detail-info">
+        <h2 class="detail-title">Project Info</h2>
+        <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
+        <div class="fact"><span class="k">Team</span><span class="v">Team project — 4 developers</span></div>
+        <div class="fact"><span class="k">Stack</span><span class="v">Java 17, Spring Boot, Spring Data JPA / Hibernate, PostgreSQL, RabbitMQ, React, TypeScript</span></div>
+        <a class="detail-btn filled" href="https://github.com/Marklu0509" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="detail-btn outline" href="projects.html">Go back</a>
+      </div>
+
+      <div class="detail-main">
+        <figure class="detail-figure">
+          <div class="detail-shot c4"></div>
+          <figcaption>Architecture &mdash; four services + RabbitMQ</figcaption>
+        </figure>
+        <div class="prose">
+          <p>Four services communicate purely over <strong>RabbitMQ</strong>, so one slow service can't block the rest. A <strong>transactional outbox</strong> guarantees zero message loss through broker outages, and idempotent handlers prevent customers being double-charged.</p>
+          <p>The <strong>Saga pattern</strong> keeps orders consistent across services by auto-rolling-back stock and payment on failure, while row-level locks stop stock overselling without throttling store throughput.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Olive footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Mark Lu</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

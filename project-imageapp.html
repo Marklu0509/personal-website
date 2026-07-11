@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cloud Architecture &amp; Serverless Pipeline — Mark Lu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <!-- Green hero band -->
+  <div class="band-peach proj-band">
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="index.html">Mark Lu</a>
+        <div class="nav-right">
+          <div class="links">
+            <a href="index.html">About</a><span class="sep">|</span>
+            <a href="index.html#experience">Experience</a><span class="sep">|</span>
+            <a href="projects.html" class="active">Projects</a>
+          </div>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="wrap proj-hero detail-hero">
+      <p class="headline">Cloud Architecture &amp; Serverless Pipeline</p>
+      <p class="proj-sub">A cloud image-processing system that scales with demand &mdash; pairing always-on web servers with an event-driven serverless pipeline that processes uploads on demand without paying for idle capacity.</p>
+    </section>
+  </div>
+
+  <!-- White content -->
+  <main class="wrap">
+    <section class="detail">
+      <div class="detail-info">
+        <h2 class="detail-title">Project Info</h2>
+        <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
+        <div class="fact"><span class="k">Status</span><span class="v">Personal project — infrastructure torn down; diagram on request</span></div>
+        <div class="fact"><span class="k">Stack</span><span class="v">AWS (EC2, ALB, Auto Scaling, S3, EventBridge, Lambda, RDS, IAM, Secrets Manager, CloudWatch), CloudFormation, Python</span></div>
+        <a class="detail-btn outline" href="projects.html">Go back</a>
+      </div>
+
+      <div class="detail-main">
+        <figure class="detail-figure">
+          <div class="detail-shot c2"></div>
+          <figcaption>The AWS architecture diagram</figcaption>
+        </figure>
+        <div class="prose">
+          <p>A hybrid architecture pairs an auto-scaling <strong>EC2 + ALB</strong> tier with a serverless <strong>S3 &rarr; EventBridge &rarr; Lambda</strong> pipeline, so neither steady nor bursty load ever pays for idle compute &mdash; proven under ApacheBench load testing.</p>
+          <p>The whole stack is defined as code in <strong>CloudFormation</strong>, so it's reproducible and safe to change, and the data tier is hardened with private-subnet RDS, least-privilege IAM, and runtime secrets pulled from Secrets Manager.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Olive footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Mark Lu</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

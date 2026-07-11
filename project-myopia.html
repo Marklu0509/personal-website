@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Myopia Progression Prediction — Mark Lu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="about-page">
+  <!-- Green hero band -->
+  <div class="band-peach proj-band">
+    <header class="wrap">
+      <nav class="site-nav">
+        <a class="brand" href="index.html">Mark Lu</a>
+        <div class="nav-right">
+          <div class="links">
+            <a href="index.html">About</a><span class="sep">|</span>
+            <a href="index.html#experience">Experience</a><span class="sep">|</span>
+            <a href="projects.html" class="active">Projects</a>
+          </div>
+          <a class="btn" href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="wrap proj-hero detail-hero">
+      <p class="headline">Myopia Progression Prediction</p>
+      <p class="proj-sub">A clinical decision-support tool that models how a child's short-sightedness may progress from only their first few months of data, giving clinicians an explainable early signal.</p>
+    </section>
+  </div>
+
+  <!-- White content -->
+  <main class="wrap">
+    <section class="detail">
+      <div class="detail-info">
+        <h2 class="detail-title">Project Info</h2>
+        <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
+        <div class="fact"><span class="k">Stack</span><span class="v">Python, scikit-learn, XGBoost, SHAP, Streamlit, pandas</span></div>
+        <a class="detail-btn filled" href="https://marklu-myopia.streamlit.app" target="_blank" rel="noopener">Visit the website</a>
+        <a class="detail-btn outline" href="projects.html">Go back</a>
+      </div>
+
+      <div class="detail-main">
+        <figure class="detail-figure">
+          <div class="detail-shot c3"></div>
+          <figcaption>The prediction input and SHAP explanation</figcaption>
+        </figure>
+        <div class="prose">
+          <p>I benchmarked six models under <strong>leave-one-out cross-validation</strong> with leakage-safe pipelines, and engineered clinically-grounded features that a purely technical modeler would miss. Patient-data de-identification is built into the pipeline from the start.</p>
+          <p>Crucially, I used <strong>SHAP</strong> to confirm the model's logic matched established optometry theory &mdash; earning clinician trust rather than asking for it &mdash; and shipped it as a live decision-support tool that turns model outputs into an actionable early signal.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Olive footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Mark Lu</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
