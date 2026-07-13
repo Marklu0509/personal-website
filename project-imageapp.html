@@ -36,7 +36,15 @@
         <h2 class="detail-title">Project Info</h2>
         <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
         <div class="fact"><span class="k">Status</span><span class="v">Personal project — infrastructure torn down; diagram on request</span></div>
-        <div class="fact"><span class="k">Stack</span><span class="v">AWS (EC2, ALB, Auto Scaling, S3, EventBridge, Lambda, RDS, IAM, Secrets Manager, CloudWatch), CloudFormation, Python</span></div>
+        <div class="fact"><span class="k">Stack</span>
+          <div class="stack-cats">
+            <div class="stack-cat"><span class="sk">Language</span><span class="sv">Python</span></div>
+            <div class="stack-cat"><span class="sk">Compute &amp; scaling</span><span class="sv">EC2 · ALB · Auto Scaling</span></div>
+            <div class="stack-cat"><span class="sk">Serverless</span><span class="sv">S3 · EventBridge · Lambda</span></div>
+            <div class="stack-cat"><span class="sk">Data &amp; security</span><span class="sv">RDS · IAM · Secrets Manager</span></div>
+            <div class="stack-cat"><span class="sk">Ops &amp; IaC</span><span class="sv">CloudWatch · CloudFormation</span></div>
+          </div>
+        </div>
         <a class="detail-btn outline" href="projects.html">Go back</a>
       </div>
 
@@ -45,9 +53,27 @@
           <div class="detail-shot c2"></div>
           <figcaption>The AWS architecture diagram</figcaption>
         </figure>
-        <div class="prose">
-          <p>A hybrid architecture pairs an auto-scaling <strong>EC2 + ALB</strong> tier with a serverless <strong>S3 &rarr; EventBridge &rarr; Lambda</strong> pipeline, so neither steady nor bursty load ever pays for idle compute &mdash; proven under ApacheBench load testing.</p>
-          <p>The whole stack is defined as code in <strong>CloudFormation</strong>, so it's reproducible and safe to change, and the data tier is hardened with private-subnet RDS, least-privilege IAM, and runtime secrets pulled from Secrets Manager.</p>
+        <div class="detail-body">
+          <div class="detail-block">
+            <h3 class="detail-h">Features</h3>
+            <ul>
+              <li>Uploaded images are processed automatically the moment they land.</li>
+              <li>Scales up under heavy traffic and back down when it's quiet &mdash; no manual intervention.</li>
+            </ul>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Why I built it</h3>
+            <p>I wanted to design a cloud system that handles real, unpredictable traffic efficiently &mdash; and could be deployed and rebuilt safely from code rather than clicked together by hand.</p>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Core technical</h3>
+            <ul>
+              <li>Absorbed bursty traffic without paying for idle compute using a hybrid <strong>AWS</strong> design (auto-scaling <strong>EC2 + ALB</strong> + serverless <strong>S3 &rarr; EventBridge &rarr; Lambda</strong>).</li>
+              <li>Proved automatic spike handling under <strong>ApacheBench</strong> load testing.</li>
+              <li>Made infrastructure reproducible and safe to change by defining the whole stack as code in <strong>CloudFormation</strong>.</li>
+              <li>Hardened security with private-subnet RDS, <strong>least-privilege IAM</strong>, and runtime secrets from <strong>Secrets Manager</strong>.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

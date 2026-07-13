@@ -35,7 +35,14 @@
       <div class="detail-info">
         <h2 class="detail-title">Project Info</h2>
         <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
-        <div class="fact"><span class="k">Stack</span><span class="v">TypeScript, NestJS, Go, Next.js / React, PostgreSQL, Caddy, Docker, GitHub Actions, AWS EC2, Chrome MV3, JWT</span></div>
+        <div class="fact"><span class="k">Stack</span>
+          <div class="stack-cats">
+            <div class="stack-cat"><span class="sk">Frontend</span><span class="sv">Next.js · React · Chrome MV3</span></div>
+            <div class="stack-cat"><span class="sk">Backend</span><span class="sv">NestJS (TypeScript) · Go · JWT</span></div>
+            <div class="stack-cat"><span class="sk">Database</span><span class="sv">PostgreSQL</span></div>
+            <div class="stack-cat"><span class="sk">Infra &amp; CI/CD</span><span class="sv">Docker · Caddy · AWS EC2 · GitHub Actions</span></div>
+          </div>
+        </div>
         <a class="detail-btn filled" href="https://pomodoro.marklu.page" target="_blank" rel="noopener">Visit the website</a>
         <a class="detail-btn outline" href="projects.html">Go back</a>
       </div>
@@ -45,9 +52,29 @@
           <div class="detail-shot c1"></div>
           <figcaption>The live focus-session timer</figcaption>
         </figure>
-        <div class="prose">
-          <p>FocusFlow splits its backend by workload: a <strong>NestJS write API</strong> handles session data, while a separate <strong>Go service</strong> takes the read-heavy analytics, so each side scales on its own. An API-first design means the same backend powers both the Next.js web app and the Chrome extension &mdash; adding a new client needs zero backend change.</p>
-          <p>Stateless <strong>JWT auth</strong> removed the need for a session store, and one-push <strong>CI/CD via GitHub Actions</strong> builds in CI so even a small EC2 host ships reliably. <strong>Caddy</strong> fronts the whole stack as a reverse proxy with automatic HTTPS.</p>
+        <div class="detail-body">
+          <div class="detail-block">
+            <h3 class="detail-h">Features</h3>
+            <ul>
+              <li>Run focused work sessions with a Pomodoro-style timer that keeps perfect time &mdash; even when it's running in the background.</li>
+              <li>Use it your way: a full web app or a lightweight browser extension, always in sync.</li>
+              <li>Track your productivity over time with a daily focus history.</li>
+              <li>One account, one source of truth &mdash; your sessions follow you across devices.</li>
+            </ul>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Why I built it</h3>
+            <p>Most browser timers drift or reset the moment you switch tabs, so I wanted a focus tool I could actually trust. I also used it to build a real multi-client, polyglot system end to end.</p>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Core technical</h3>
+            <ul>
+              <li>Kept the timer accurate in the background by persisting an <strong>end-timestamp</strong> in a Chrome MV3 extension, surviving service-worker sleep.</li>
+              <li>Served both a <strong>Next.js</strong> web app and the extension from one <strong>API-first NestJS</strong> backend, so new clients need zero backend change.</li>
+              <li>Split read-heavy analytics into a separate <strong>Go</strong> service so each part scales independently.</li>
+              <li>Automated one-push deploys with <strong>GitHub Actions</strong> so even a small server ships reliably.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

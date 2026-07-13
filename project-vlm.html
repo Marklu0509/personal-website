@@ -24,7 +24,7 @@
     </header>
 
     <section class="wrap proj-hero detail-hero">
-      <p class="headline">VLM Fine-Tuning &amp; LLM-as-Judge Pipeline</p>
+      <p class="headline">Vision-Language Model Fine-Tuning &amp; Evaluation</p>
       <p class="proj-sub">A research pipeline that fine-tunes a vision-language model to describe images faithfully, paired with an automated "LLM-as-judge" system that measures how trustworthy those descriptions really are.</p>
     </section>
   </div>
@@ -36,7 +36,14 @@
         <h2 class="detail-title">Project Info</h2>
         <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
         <div class="fact"><span class="k">Team</span><span class="v">University research collaboration — 8 people</span></div>
-        <div class="fact"><span class="k">Stack</span><span class="v">Python, PyTorch, LLaMA-Factory, vLLM, LoRA, Qwen3-VL, ArtcomBench</span></div>
+        <div class="fact"><span class="k">Stack</span>
+          <div class="stack-cats">
+            <div class="stack-cat"><span class="sk">Language</span><span class="sv">Python</span></div>
+            <div class="stack-cat"><span class="sk">ML &amp; fine-tuning</span><span class="sv">PyTorch · LLaMA-Factory · LoRA · Qwen3-VL</span></div>
+            <div class="stack-cat"><span class="sk">Serving</span><span class="sv">vLLM</span></div>
+            <div class="stack-cat"><span class="sk">Evaluation</span><span class="sv">ArtcomBench (LLM-as-judge)</span></div>
+          </div>
+        </div>
         <a class="detail-btn filled" href="https://github.com/Marklu0509" target="_blank" rel="noopener">View on GitHub</a>
         <a class="detail-btn outline" href="projects.html">Go back</a>
       </div>
@@ -46,9 +53,26 @@
           <div class="detail-shot c6"></div>
           <figcaption>Benchmark comparison &mdash; baselines vs fine-tuned</figcaption>
         </figure>
-        <div class="prose">
-          <p><strong>LoRA fine-tuning</strong> produced a model that beat all three baselines &mdash; including a 2025 state-of-the-art model &mdash; on every faithfulness metric, trained on a single GPU in under three hours.</p>
-          <p>To make "how trustworthy is this output" measurable and reproducible, I helped build <strong>ArtcomBench</strong>, a custom LLM-as-judge benchmark, and validated 3,500 AI-generated labels against human raters (ICC 0.82) before training. The result is quality you can quantify, not just claim.</p>
+        <div class="detail-body">
+          <div class="detail-block">
+            <h3 class="detail-h">Features</h3>
+            <ul>
+              <li>Produces faithful, image-grounded descriptions instead of fluent-but-hallucinated ones.</li>
+              <li>Automatically scores how trustworthy any model's outputs are, with a reusable evaluation benchmark.</li>
+            </ul>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Why I built it</h3>
+            <p>Vision-language models sound convincing even when they're wrong, and measuring that is expensive and subjective. We set out to make faithfulness both <em>achievable</em> (via fine-tuning) and <em>measurable</em> (via an automated judge).</p>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Core technical</h3>
+            <ul>
+              <li><strong>LoRA fine-tuned</strong> a vision-language model that beat all three baselines &mdash; including a 2025 SOTA model &mdash; on every faithfulness metric.</li>
+              <li>Built <strong>ArtcomBench</strong>, an <strong>LLM-as-judge</strong> pipeline that breaks each output into checkable claims and verifies them.</li>
+              <li>Kept the evaluation trustworthy by validating 3,500 AI-generated labels against human raters (<strong>ICC 0.82</strong>).</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

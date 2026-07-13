@@ -36,7 +36,14 @@
         <h2 class="detail-title">Project Info</h2>
         <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
         <div class="fact"><span class="k">Team</span><span class="v">Team project — 4 developers</span></div>
-        <div class="fact"><span class="k">Stack</span><span class="v">Java 17, Spring Boot, Spring Data JPA / Hibernate, PostgreSQL, RabbitMQ, React, TypeScript</span></div>
+        <div class="fact"><span class="k">Stack</span>
+          <div class="stack-cats">
+            <div class="stack-cat"><span class="sk">Frontend</span><span class="sv">React · TypeScript</span></div>
+            <div class="stack-cat"><span class="sk">Backend</span><span class="sv">Java 17 · Spring Boot · Spring Data JPA / Hibernate</span></div>
+            <div class="stack-cat"><span class="sk">Database</span><span class="sv">PostgreSQL</span></div>
+            <div class="stack-cat"><span class="sk">Messaging</span><span class="sv">RabbitMQ</span></div>
+          </div>
+        </div>
         <a class="detail-btn filled" href="https://github.com/Marklu0509" target="_blank" rel="noopener">View on GitHub</a>
         <a class="detail-btn outline" href="projects.html">Go back</a>
       </div>
@@ -46,9 +53,27 @@
           <div class="detail-shot c4"></div>
           <figcaption>Architecture &mdash; four services + RabbitMQ</figcaption>
         </figure>
-        <div class="prose">
-          <p>Four services communicate purely over <strong>RabbitMQ</strong>, so one slow service can't block the rest. A <strong>transactional outbox</strong> guarantees zero message loss through broker outages, and idempotent handlers prevent customers being double-charged.</p>
-          <p>The <strong>Saga pattern</strong> keeps orders consistent across services by auto-rolling-back stock and payment on failure, while row-level locks stop stock overselling without throttling store throughput.</p>
+        <div class="detail-body">
+          <div class="detail-block">
+            <h3 class="detail-h">Features</h3>
+            <ul>
+              <li>Place an order that reliably coordinates payment, delivery, and notifications behind the scenes.</li>
+              <li>Never double-charged, never oversold &mdash; even if a service fails mid-order.</li>
+            </ul>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Why I built it</h3>
+            <p>I wanted to implement the resilience patterns real distributed systems rely on &mdash; not just read about them &mdash; by building an order flow that stays correct when parts of it fail.</p>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Core technical</h3>
+            <ul>
+              <li>Decoupled four services over <strong>RabbitMQ</strong> so one slow service can't block the rest.</li>
+              <li>Guaranteed zero message loss through outages with the <strong>transactional outbox</strong> pattern.</li>
+              <li>Prevented customers being double-charged by making every handler <strong>idempotent</strong>.</li>
+              <li>Kept orders consistent with the <strong>Saga</strong> pattern (auto-rollback of stock and payment) and stopped overselling with row-level locks.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

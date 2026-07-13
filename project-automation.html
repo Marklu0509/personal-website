@@ -36,7 +36,14 @@
         <h2 class="detail-title">Project Info</h2>
         <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
         <div class="fact"><span class="k">Access</span><span class="v">Private service — walkthrough on request</span></div>
-        <div class="fact"><span class="k">Stack</span><span class="v">Python, Docker &amp; Compose, Nginx, Prometheus, Grafana, PostgreSQL, GitHub Actions, Linux VPS</span></div>
+        <div class="fact"><span class="k">Stack</span>
+          <div class="stack-cats">
+            <div class="stack-cat"><span class="sk">Language</span><span class="sv">Python</span></div>
+            <div class="stack-cat"><span class="sk">Database</span><span class="sv">PostgreSQL</span></div>
+            <div class="stack-cat"><span class="sk">Monitoring</span><span class="sv">Prometheus · Grafana</span></div>
+            <div class="stack-cat"><span class="sk">Infra &amp; CI/CD</span><span class="sv">Docker &amp; Compose · Nginx · GitHub Actions · Linux VPS</span></div>
+          </div>
+        </div>
         <a class="detail-btn outline" href="projects.html">Go back</a>
       </div>
 
@@ -45,9 +52,27 @@
           <div class="detail-shot c5"></div>
           <figcaption>The Grafana monitoring dashboard</figcaption>
         </figure>
-        <div class="prose">
-          <p>The service guarantees <strong>exactly-once processing</strong> across restarts using database-level idempotency, so no event is ever lost or double-counted. I also raised the request success rate from <strong>71% to 99.7%</strong> by reverse-engineering a hidden upstream API rule from structured logs.</p>
-          <p>On the operations side, Prometheus/Grafana alerting cut incident detection from hours to <strong>under 90 seconds</strong> &mdash; firing even when the process crashes &mdash; and releases are automated behind an 85-test gate. Monitoring is version-controlled as code, so dashboards, alerts, and routing are reproducible.</p>
+        <div class="detail-body">
+          <div class="detail-block">
+            <h3 class="detail-h">Features</h3>
+            <ul>
+              <li>Processes a live event feed continuously, 24/7, without dropping or duplicating anything.</li>
+              <li>Recovers cleanly from restarts and crashes.</li>
+              <li>Surfaces incidents within seconds instead of hours.</li>
+            </ul>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Why I built it</h3>
+            <p>I wanted to build and actually <em>operate</em> a genuinely reliable, always-on service &mdash; and learn production monitoring and incident response (SRE) hands-on rather than in theory.</p>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Core technical</h3>
+            <ul>
+              <li>Guaranteed exactly-once processing across restarts with <strong>database-level idempotency</strong>, so no event is lost or double-counted.</li>
+              <li>Raised success rate from <strong>71% to 99.7%</strong> by reverse-engineering a hidden upstream API rule from <strong>structured logs</strong>.</li>
+              <li>Cut incident detection from hours to under <strong>90 seconds</strong> with <strong>Prometheus/Grafana</strong> monitoring-as-code that fires even on a crash.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

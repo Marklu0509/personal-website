@@ -35,19 +35,44 @@
       <div class="detail-info">
         <h2 class="detail-title">Project Info</h2>
         <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
-        <div class="fact"><span class="k">Stack</span><span class="v">Python, scikit-learn, XGBoost, SHAP, Streamlit, pandas</span></div>
+        <div class="fact"><span class="k">Stack</span>
+          <div class="stack-cats">
+            <div class="stack-cat"><span class="sk">Language</span><span class="sv">Python</span></div>
+            <div class="stack-cat"><span class="sk">ML &amp; modeling</span><span class="sv">scikit-learn · XGBoost · SHAP</span></div>
+            <div class="stack-cat"><span class="sk">Data &amp; app</span><span class="sv">pandas · Streamlit</span></div>
+          </div>
+        </div>
         <a class="detail-btn filled" href="https://marklu-myopia.streamlit.app" target="_blank" rel="noopener">Visit the website</a>
         <a class="detail-btn outline" href="projects.html">Go back</a>
       </div>
 
       <div class="detail-main">
         <figure class="detail-figure">
-          <div class="detail-shot c3"></div>
-          <figcaption>The prediction input and SHAP explanation</figcaption>
+          <div class="detail-shot c3"><img src="myopia.png" alt="Myopia progression prediction dashboard"></div>
+          <figcaption>The live decision-support tool &mdash; patient inputs, risk gauge, and AXL growth trajectory</figcaption>
         </figure>
-        <div class="prose">
-          <p>I benchmarked six models under <strong>leave-one-out cross-validation</strong> with leakage-safe pipelines, and engineered clinically-grounded features that a purely technical modeler would miss. Patient-data de-identification is built into the pipeline from the start.</p>
-          <p>Crucially, I used <strong>SHAP</strong> to confirm the model's logic matched established optometry theory &mdash; earning clinician trust rather than asking for it &mdash; and shipped it as a live decision-support tool that turns model outputs into an actionable early signal.</p>
+        <div class="detail-body">
+          <div class="detail-block">
+            <h3 class="detail-h">Features</h3>
+            <ul>
+              <li>Enter a child's early measurements and get an estimate of their long-term short-sightedness progression.</li>
+              <li>See <em>why</em> &mdash; plain, visual explanations of what's driving the prediction.</li>
+              <li>Live and in-browser &mdash; nothing to install.</li>
+            </ul>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Why I built it</h3>
+            <p>As an optometrist, I wanted to give clinicians an earlier signal for children at high risk of fast-progressing myopia, instead of waiting years to find out. Building it showed me how much further technology could scale clinical care &mdash; which is what led me into software engineering.</p>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Core technical</h3>
+            <ul>
+              <li>Estimated long-term progression from just the <strong>first 6 months of data</strong> (RMSE 0.090 mm/yr), best of a 6-model benchmark with leakage-safe <strong>scikit-learn</strong> pipelines.</li>
+              <li>Turned optometry domain knowledge into predictive features a purely technical modeler would miss.</li>
+              <li>Earned clinician trust by using <strong>SHAP</strong> to confirm the model's logic matched clinical theory.</li>
+              <li>Shipped it as a live <strong>Streamlit</strong> tool with patient data de-identified by design.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

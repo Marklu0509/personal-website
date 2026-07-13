@@ -7,3 +7,11 @@
 
 # Logs
 *.log
+
+# Local content drafts / planning notes (keep local, not published)
+*-content.md
+projects-cards.md
+projects-problem-solution.md
+
+# Unused source image export (site uses me.jpg)
+me.jpeg
