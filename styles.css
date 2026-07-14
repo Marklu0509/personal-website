@@ -517,10 +517,27 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
   transition: transform 0.2s ease;
 }
 .about-page .pcard:hover { transform: translateY(-3px); }
+/* Coming-soon cards: still clickable; thumbnail greys + shows label on hover */
+.about-page .pcard.coming-soon .pcard-img { position: relative; }
+.about-page .pcard .coming-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(224, 226, 220, 0);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease, background 0.25s ease;
+}
+.about-page .pcard.coming-soon .pcard-img:hover .coming-overlay {
+  opacity: 1; background: rgba(224, 226, 220, 0.9);
+}
+.about-page .pcard .coming-overlay span {
+  font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 500; color: #6a6f66;
+}
 .about-page .pcard .pcard-img {
   width: 100%; aspect-ratio: 16 / 9; border-radius: 0; overflow: hidden;
   margin-bottom: 22px;
 }
+.about-page .pcard .pcard-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .about-page .pcard .pcard-img.c1 { background: linear-gradient(150deg,#5c6f5b,#31402f); }
 .about-page .pcard .pcard-img.c2 { background: linear-gradient(150deg,#c8721f,#5f3410); }
 .about-page .pcard .pcard-img.c3 { background: linear-gradient(150deg,#eaa24a,#dd7d2c); }
@@ -563,8 +580,18 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 /* Button arrows — change these two symbols to restyle every button at once */
 .about-page .detail-info .detail-btn.filled::after { content: "\2B62"; font-size: 17px; line-height: 1; display: inline-block; transform: rotate(-45deg); }
 .about-page .detail-info .detail-btn.outline::before { content: "\2B60"; font-size: 17px; line-height: 1; order: -1; }
+/* GitHub button: filled style, icon + label, no arrow */
+.about-page .detail-info .detail-btn.gh::after { content: none; }
+.about-page .detail-info .detail-btn.gh .gh-icon { width: 18px; height: 18px; flex: none; }
 .about-page .detail-main { grid-column: 2; display: flex; flex-direction: column; gap: 44px; }
 .about-page .detail-figure { margin: 0; }
+/* full-image screenshots in project detail body */
+.about-page .detail-main figure.shot { margin: 0; }
+.about-page .detail-main figure.shot > img { width: 100%; height: auto; display: block; }
+.about-page .detail-main figure.shot figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
+.about-page .detail-main .ext-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center; }
+.about-page .detail-main .ext-pair img { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+@media (max-width: 620px) { .about-page .detail-main .ext-pair { grid-template-columns: 1fr; } }
 .about-page .detail-figure .detail-shot { width: 100%; aspect-ratio: 16 / 10; border-radius: 0; background: linear-gradient(150deg,#c8721f,#5f3410); overflow: hidden; }
 .about-page .detail-figure .detail-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .about-page .detail-figure .detail-shot.c1 { background: linear-gradient(150deg,#5c6f5b,#31402f); }

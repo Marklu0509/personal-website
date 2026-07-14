@@ -25,7 +25,7 @@
 
     <section class="wrap proj-hero detail-hero">
       <p class="headline">FocusFlow, A Pomodoro Clock</p>
-      <p class="proj-sub">A full-stack focus-timer platform that helps people work in structured sessions and track their productivity over time &mdash; available as both a web app and a browser extension.</p>
+      <p class="proj-sub">Pomodoro keeps me focused &mdash; but the usual screen-locking apps always got in my way. So I built one that plays your own music and blocks just the sites that distract you.</p>
     </section>
   </div>
 
@@ -44,37 +44,58 @@
           </div>
         </div>
         <a class="detail-btn filled" href="https://pomodoro.marklu.page" target="_blank" rel="noopener">Visit the website</a>
+        <a class="detail-btn filled gh" href="https://github.com/Marklu0509" target="_blank" rel="noopener"><svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.02-1.49-2.01.44-2.43-.97-2.43-.97-.33-.83-.8-1.05-.8-1.05-.66-.45.05-.44.05-.44.72.05 1.1.74 1.1.74.65 1.11 1.7.79 2.11.6.07-.47.25-.79.46-.97-1.61-.18-3.3-.8-3.3-3.58 0-.79.28-1.44.74-1.95-.07-.18-.32-.92.07-1.91 0 0 .6-.19 1.97.74.57-.16 1.18-.24 1.79-.24.61 0 1.22.08 1.79.24 1.37-.93 1.97-.74 1.97-.74.39.99.14 1.73.07 1.91.46.51.74 1.16.74 1.95 0 2.79-1.69 3.4-3.31 3.58.26.22.49.66.49 1.33 0 .96-.01 1.74-.01 1.98 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a>
         <a class="detail-btn outline" href="projects.html">Go back</a>
       </div>
 
       <div class="detail-main">
-        <figure class="detail-figure">
-          <div class="detail-shot c1"></div>
-          <figcaption>The live focus-session timer</figcaption>
+        <figure class="shot">
+          <img src="assets/taskpage.jpg" alt="FocusFlow task list and focus timer">
+          <figcaption>Create separate tasks, set a target number of sessions, and pick a focus mode &mdash; then start the clock.</figcaption>
         </figure>
-        <div class="detail-body">
-          <div class="detail-block">
-            <h3 class="detail-h">Features</h3>
-            <ul>
-              <li>Run focused work sessions with a Pomodoro-style timer that keeps perfect time &mdash; even when it's running in the background.</li>
-              <li>Use it your way: a full web app or a lightweight browser extension, always in sync.</li>
-              <li>Track your productivity over time with a daily focus history.</li>
-              <li>One account, one source of truth &mdash; your sessions follow you across devices.</li>
-            </ul>
+
+        <div class="detail-block">
+          <h3 class="detail-h">Features</h3>
+          <ul>
+            <li>Break work into focused sessions with a Pomodoro-style timer that keeps perfect time &mdash; even while it runs in the background.</li>
+            <li>Organise work into separate tasks, each with a target number of sessions and its own focus mode.</li>
+            <li>Tune every session: custom lengths, end-of-session alarms and ambient sound, and your own YouTube music.</li>
+            <li>Track your momentum with focus analytics &mdash; daily goals, weekly trends, and your best days.</li>
+            <li>Use it as a web app or a Chrome extension that runs in the background and blocks distracting sites.</li>
+          </ul>
+        </div>
+
+        <figure class="shot">
+          <img src="assets/settings.jpg" alt="Focus profiles and audio settings">
+          <figcaption>Focus profiles &mdash; custom session lengths, alarm and milestone chimes, ambient sound, and your own YouTube music.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="assets/stat.jpg" alt="Focus analytics dashboard">
+          <figcaption>Focus analytics &mdash; today's progress, weekly trends, and your best days, so momentum is something you can see.</figcaption>
+        </figure>
+
+        <div class="detail-block">
+          <h3 class="detail-h">Why I built it</h3>
+          <p>Most browser timers drift or reset the moment you switch tabs, so I wanted a focus tool I could actually trust. I also used it to build a real multi-client, polyglot system end to end.</p>
+        </div>
+
+        <figure class="shot">
+          <div class="ext-pair">
+            <img src="assets/extension.png" alt="FocusFlow Chrome extension timer">
+            <img src="assets/blocksite.png" alt="Chrome extension blocked-sites settings">
           </div>
-          <div class="detail-block">
-            <h3 class="detail-h">Why I built it</h3>
-            <p>Most browser timers drift or reset the moment you switch tabs, so I wanted a focus tool I could actually trust. I also used it to build a real multi-client, polyglot system end to end.</p>
-          </div>
-          <div class="detail-block">
-            <h3 class="detail-h">Core technical</h3>
-            <ul>
-              <li>Kept the timer accurate in the background by persisting an <strong>end-timestamp</strong> in a Chrome MV3 extension, surviving service-worker sleep.</li>
-              <li>Served both a <strong>Next.js</strong> web app and the extension from one <strong>API-first NestJS</strong> backend, so new clients need zero backend change.</li>
-              <li>Split read-heavy analytics into a separate <strong>Go</strong> service so each part scales independently.</li>
-              <li>Automated one-push deploys with <strong>GitHub Actions</strong> so even a small server ships reliably.</li>
-            </ul>
-          </div>
+          <figcaption>A Chrome extension runs the same timer in the background &mdash; and blocks distracting sites for the length of a session.</figcaption>
+        </figure>
+
+        <div class="detail-block">
+          <h3 class="detail-h">Core technical</h3>
+          <ul>
+            <li>Kept the timer accurate in the background by persisting an <strong>end-timestamp</strong> in a Chrome MV3 extension, surviving service-worker sleep.</li>
+            <li>Served both a <strong>Next.js</strong> web app and the extension from one <strong>API-first NestJS</strong> backend, so new clients need zero backend change.</li>
+            <li>Split read-heavy analytics into a separate <strong>Go</strong> service so each part scales independently.</li>
+            <li>Automated one-push deploys with <strong>GitHub Actions</strong> so even a small server ships reliably.</li>
+          </ul>
         </div>
       </div>
     </section>
