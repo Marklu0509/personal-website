@@ -397,6 +397,7 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 .about-page .knock h2 {
   font-size: 35px; font-weight: 500; line-height: 40px; letter-spacing: -0.01em;
 }
+.about-page .ap-hero .headline { max-width: none; }
 .about-page .ap-hero .jumpto { font-size: 16px; }
 .about-page .ap-hero .jumpto .h {
   font-size: 16px; font-weight: 500; letter-spacing: 0; text-transform: none;
@@ -405,6 +406,7 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 .about-page .fact .k { font-size: 15px; letter-spacing: 0; text-transform: none; }
 .about-page .fact .v { font-size: 16px; }
 .about-page .prose p { font-size: 16px; line-height: 24px; color: var(--ink); }
+.about-page #difference .trait { font-weight: 700; color: #3E3F05; }
 .about-page .row-head .num { font-size: 16px; color: #3E3F05; }
 .about-page .row-head h2 { font-size: 16px; font-weight: 500; letter-spacing: 0; color: #3E3F05; }
 .about-page figure.plate figcaption { font-size: 14px; }
@@ -587,6 +589,29 @@ form.contact select:focus { outline: 2px solid var(--ink); outline-offset: 1px; 
 .about-page .detail-figure { margin: 0; }
 /* full-image screenshots in project detail body */
 .about-page .detail-main figure.shot { margin: 0; }
+/* image carousel (project detail) */
+.about-page .carousel { position: relative; }
+.about-page .carousel-viewport { position: relative; overflow: hidden; background: transparent; }
+.about-page .carousel-track { display: block; }
+.about-page .carousel-slide { display: none; justify-content: center; align-items: center; }
+.about-page .carousel-slide.active { display: flex; animation: carfade 0.3s ease; }
+.about-page .carousel-slide img { max-width: 100%; max-height: 600px; width: auto; height: auto; object-fit: contain; display: block; }
+.about-page .carousel-slide.small img { max-width: 46%; max-height: 320px; }
+@keyframes carfade { from { opacity: 0.35; } to { opacity: 1; } }
+.about-page .carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 40px; height: 40px; padding: 0; border: none; cursor: pointer;
+  border-radius: 50%; background: rgba(255,255,255,0.85); color: #1c1d17;
+  font-size: 24px; line-height: 1; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15); transition: background 0.15s ease;
+}
+.about-page .carousel-btn:hover { background: #fff; }
+.about-page .carousel-btn.prev { left: 12px; }
+.about-page .carousel-btn.next { right: 12px; }
+.about-page .carousel-caption { font-size: 14px; color: var(--ink-soft); margin: 12px 0 0; }
+.about-page .carousel-dots { display: flex; gap: 8px; margin-top: 12px; }
+.about-page .carousel-dot { width: 8px; height: 8px; padding: 0; border: none; border-radius: 50%; background: var(--line-strong); cursor: pointer; transition: background 0.15s ease; }
+.about-page .carousel-dot.active { background: var(--ink); }
 .about-page .detail-main figure.shot > img { width: 100%; height: auto; display: block; }
 .about-page .detail-main figure.shot figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
 .about-page .detail-main .ext-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center; }

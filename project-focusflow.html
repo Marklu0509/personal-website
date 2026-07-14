@@ -49,10 +49,21 @@
       </div>
 
       <div class="detail-main">
-        <figure class="shot">
-          <img src="assets/taskpage.jpg" alt="FocusFlow task list and focus timer">
-          <figcaption>Create separate tasks, set a target number of sessions, and pick a focus mode &mdash; then start the clock.</figcaption>
-        </figure>
+        <div class="carousel" data-carousel>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="assets/taskpage.jpg" alt="FocusFlow task list and focus timer" data-caption="Create separate tasks, set a target number of sessions, and pick a focus mode — then start the clock."></div>
+              <div class="carousel-slide"><img src="assets/settings.jpg" alt="Focus profiles and audio settings" data-caption="Focus profiles — custom session lengths, alarm and milestone chimes, ambient sound, and your own YouTube music."></div>
+              <div class="carousel-slide"><img src="assets/heatmap.jpg" alt="Focus history heatmap calendar" data-caption="A focus-history heatmap — see how consistently you've focused across the week, month, and year at a glance."></div>
+              <div class="carousel-slide small"><img src="assets/extension.png" alt="FocusFlow Chrome extension timer" data-caption="A Chrome extension runs the same timer in the background while you work in other tabs."></div>
+              <div class="carousel-slide small"><img src="assets/blocksite.png" alt="Chrome extension blocked-sites settings" data-caption="It also blocks distracting sites for the length of a focus session."></div>
+            </div>
+            <button class="carousel-btn prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <button class="carousel-btn next" type="button" aria-label="Next image">&rsaquo;</button>
+          </div>
+          <p class="carousel-caption"></p>
+          <div class="carousel-dots"></div>
+        </div>
 
         <div class="detail-block">
           <h3 class="detail-h">Features</h3>
@@ -65,28 +76,10 @@
           </ul>
         </div>
 
-        <figure class="shot">
-          <img src="assets/settings.jpg" alt="Focus profiles and audio settings">
-          <figcaption>Focus profiles &mdash; custom session lengths, alarm and milestone chimes, ambient sound, and your own YouTube music.</figcaption>
-        </figure>
-
-        <figure class="shot">
-          <img src="assets/stat.jpg" alt="Focus analytics dashboard">
-          <figcaption>Focus analytics &mdash; today's progress, weekly trends, and your best days, so momentum is something you can see.</figcaption>
-        </figure>
-
         <div class="detail-block">
           <h3 class="detail-h">Why I built it</h3>
           <p>Most browser timers drift or reset the moment you switch tabs, so I wanted a focus tool I could actually trust. I also used it to build a real multi-client, polyglot system end to end.</p>
         </div>
-
-        <figure class="shot">
-          <div class="ext-pair">
-            <img src="assets/extension.png" alt="FocusFlow Chrome extension timer">
-            <img src="assets/blocksite.png" alt="Chrome extension blocked-sites settings">
-          </div>
-          <figcaption>A Chrome extension runs the same timer in the background &mdash; and blocks distracting sites for the length of a session.</figcaption>
-        </figure>
 
         <div class="detail-block">
           <h3 class="detail-h">Core technical</h3>
@@ -109,5 +102,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="assets/carousel.js"></script>
 </body>
 </html>
