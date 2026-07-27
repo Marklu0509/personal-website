@@ -25,7 +25,7 @@
 
     <section class="wrap proj-hero detail-hero">
       <p class="headline">Foresight &mdash; World-Event Forecast Tracker</p>
-      <p class="proj-sub">Foresight follows proven analysts and mirrors their calls on real-world events &mdash; ceasefires, elections, rate decisions &mdash; so you're always positioned on what they see coming.</p>
+      <p class="proj-sub">Foresight follows proven analysts and mirrors their calls on real-world events like ceasefires, elections, and rate decisions, so you're always positioned on what they see coming.</p>
     </section>
   </div>
 
@@ -51,42 +51,42 @@
       <div class="detail-main">
         <figure class="shot">
           <img src="assets/pcopbot.png" alt="Foresight forecast activity table">
-          <figcaption>Forecast Activity &mdash; every mirrored call on real-world events, logged with side, entry price, and size.</figcaption>
+          <figcaption>Forecast Activity: every mirrored call on real-world events, logged with side, entry price, and size.</figcaption>
         </figure>
         <div class="detail-body">
           <div class="detail-block">
             <h3 class="detail-h">Features</h3>
             <ul>
-              <li><strong>Follow the sharp money</strong> &mdash; auto-mirror any forecaster's positions the moment they move.</li>
-              <li><strong>Size on your terms</strong> &mdash; match their conviction as a fixed amount or a % of their stake.</li>
-              <li><strong>Smart aggregation</strong> &mdash; when a forecaster builds a position in many small steps, Foresight bundles them into one clean entry at the average price, so you skip the noise and avoid over-firing.</li>
-              <li><strong>Built-in guardrails</strong> &mdash; price limits, per-event caps, and spend limits keep every position in check.</li>
-              <li><strong>Lock in gains automatically</strong> &mdash; tiered take-profit and stop-loss exit for you at the right time.</li>
-              <li><strong>Full transparency</strong> &mdash; every forecast, entry, and realized result logged in one place.</li>
-              <li><strong>Always-on ingestion</strong> &mdash; processes a live event feed continuously, 24/7, without dropping or duplicating anything.</li>
-              <li><strong>Crash-resilient</strong> &mdash; recovers cleanly from restarts and crashes with no manual intervention.</li>
-              <li><strong>Real-time visibility</strong> &mdash; surfaces incidents within seconds instead of hours.</li>
+              <li><strong>Follow the sharp money</strong>: auto-mirror any forecaster's positions the moment they move.</li>
+              <li><strong>Size on your terms</strong>: match their conviction as a fixed amount or a % of their stake.</li>
+              <li><strong>Smart aggregation</strong>: when a forecaster builds a position in many small steps, Foresight bundles them into one clean entry at the average price, so you skip the noise and avoid over-firing.</li>
+              <li><strong>Built-in guardrails</strong>: price limits, per-event caps, and spend limits keep every position in check.</li>
+              <li><strong>Lock in gains automatically</strong>: tiered take-profit and stop-loss exit for you at the right time.</li>
+              <li><strong>Full transparency</strong>: every forecast, entry, and realized result logged in one place.</li>
+              <li><strong>Always-on ingestion</strong>: processes a live event feed continuously, 24/7, without dropping or duplicating anything.</li>
+              <li><strong>Crash-resilient</strong>: recovers cleanly from restarts and crashes with no manual intervention.</li>
+              <li><strong>Real-time visibility</strong>: surfaces incidents within seconds instead of hours.</li>
             </ul>
           </div>
           <div class="detail-block">
             <h3 class="detail-h">Why I built it</h3>
-            <p>I wanted to build and actually <em>operate</em> a genuinely reliable, always-on service &mdash; and learn production monitoring and incident response (SRE) hands-on rather than in theory.</p>
+            <p>I wanted to build and actually <em>operate</em> a genuinely reliable, always-on service, and learn production monitoring and incident response (SRE) hands-on rather than in theory.</p>
           </div>
           <figure class="shot">
             <img src="assets/grafana.png" alt="Grafana alert firing and resolving in Discord">
-            <figcaption>Monitoring-as-code &mdash; a Grafana alert fires to Discord within 90 seconds if the bot stops polling, even on a crash, and auto-resolves when it recovers.</figcaption>
+            <figcaption>Monitoring-as-code: a Grafana alert fires to Discord within 90 seconds if the bot stops polling, even on a crash, and auto-resolves when it recovers.</figcaption>
           </figure>
           <div class="detail-block">
             <h3 class="detail-h">Core technical</h3>
             <ul>
-              <li><strong>Exactly-once processing</strong> &mdash; guarantees exactly-once handling across restarts via database-level idempotency, so no event is lost or double-counted.</li>
-              <li><strong>Reliability engineering</strong> &mdash; raised success rate from 71% to 99.7% by reverse-engineering a hidden upstream API rule from structured logs.</li>
-              <li><strong>Monitoring-as-code</strong> &mdash; cut incident detection from hours to under 90 seconds with Prometheus/Grafana alerting that fires even on a crash.</li>
-              <li><strong>Event-driven mirroring</strong> &mdash; a continuous poll loop detects each tracked wallet's moves within sub-second intervals and mirrors them via the CLOB API, with a per-source watermark guaranteeing exactly-once handling across restarts.</li>
-              <li><strong>Deterministic sizing &amp; execution</strong> &mdash; trades are sized as a fixed amount or a % of the source's stake, routed as fill-or-kill or good-till-cancel orders with configurable slippage and automatic market fallback.</li>
-              <li><strong>Pre-trade risk engine</strong> &mdash; every order passes a cap-first-then-reject chain of price bands, per-trade/per-market limits, and spend ceilings before execution.</li>
-              <li><strong>Fill aggregation</strong> &mdash; fragmented fills are accumulated in a sliding window and fired as one combined order at the volume-weighted average price, cutting order count, fees, and slippage.</li>
-              <li><strong>Automated exits</strong> &mdash; a monitor handles tiered take-profit, stop-loss, mirrored exits, and on-chain redemption, closing the full lifecycle from entry to settlement automatically.</li>
+              <li><strong>Exactly-once processing</strong>: guarantees exactly-once handling across restarts via database-level idempotency, so no event is lost or double-counted.</li>
+              <li><strong>Reliability engineering</strong>: raised success rate from 71% to 99.7% by reverse-engineering a hidden upstream API rule from structured logs.</li>
+              <li><strong>Monitoring-as-code</strong>: cut incident detection from hours to under 90 seconds with Prometheus/Grafana alerting that fires even on a crash.</li>
+              <li><strong>Event-driven mirroring</strong>: a continuous poll loop detects each tracked wallet's moves within sub-second intervals and mirrors them via the CLOB API, with a per-source watermark guaranteeing exactly-once handling across restarts.</li>
+              <li><strong>Deterministic sizing &amp; execution</strong>: trades are sized as a fixed amount or a % of the source's stake, routed as fill-or-kill or good-till-cancel orders with configurable slippage and automatic market fallback.</li>
+              <li><strong>Pre-trade risk engine</strong>: every order passes a cap-first-then-reject chain of price bands, per-trade/per-market limits, and spend ceilings before execution.</li>
+              <li><strong>Fill aggregation</strong>: fragmented fills are accumulated in a sliding window and fired as one combined order at the volume-weighted average price, cutting order count, fees, and slippage.</li>
+              <li><strong>Automated exits</strong>: a monitor handles tiered take-profit, stop-loss, mirrored exits, and on-chain redemption, closing the full lifecycle from entry to settlement automatically.</li>
             </ul>
           </div>
         </div>
