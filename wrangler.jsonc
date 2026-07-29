@@ -1,0 +1,23 @@
+{
+  // Cloudflare project config. Read by both `wrangler` (deploy/dev) and the
+  // Vitest workers pool (tests). One file, so tests run against the same
+  // bindings production uses.
+  "name": "personal-website",
+  "compatibility_date": "2025-09-06",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // This is a static site: the built output IS the repo root.
+  "pages_build_output_dir": ".",
+
+  // D1 (SQLite) binding the analytics ingestion Function (#6) will write to.
+  // `database_id` is a placeholder until the DB is created in Cloudflare
+  // (see the activation runbook, #10). Tests never use this id — the Vitest
+  // pool provisions a local, in-memory D1 automatically.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "analytics",
+      "database_id": "PLACEHOLDER_SET_IN_CLOUDFLARE"
+    }
+  ]
+}

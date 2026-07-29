@@ -15,3 +15,9 @@ projects-problem-solution.md
 
 # Unused source image export (site uses me.jpg)
 me.jpeg
+
+# Node / test tooling
+node_modules/
+coverage/
+.wrangler/
+.dev.vars
