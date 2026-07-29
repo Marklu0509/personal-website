@@ -1,0 +1,5 @@
+# Crawling is intentionally allowed so that crawlers can read the
+# per-page `noindex` directive and drop these pages from their index.
+# This site is "unlisted": reachable by direct link, kept out of search results.
+User-agent: *
+Allow: /
