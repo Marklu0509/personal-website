@@ -1,14 +1,30 @@
-import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
+import { defineConfig } from "vitest/config";
+import { defineWorkersProject } from "@cloudflare/vitest-pool-workers/config";
 
-// Runs tests INSIDE the real Cloudflare Workers runtime (via Miniflare),
-// not plain Node — so a test can call a Pages Function and hit a local D1
-// exactly like production would. Bindings come from wrangler.jsonc.
-export default defineWorkersConfig({
+// Two test projects, because they need different runtimes:
+//  - "node":    plain Node, for tests that read files off disk
+//               (e.g. the de-index guard). The Workers sandbox has no fs.
+//  - "workers": the real Cloudflare Workers runtime (via Miniflare), for
+//               Pages Functions + D1 tests. Bindings come from wrangler.jsonc.
+export default defineConfig({
   test: {
-    poolOptions: {
-      workers: {
-        wrangler: { configPath: "./wrangler.jsonc" },
+    projects: [
+      {
+        test: {
+          name: "node",
+          environment: "node",
+          include: ["tests/node/**/*.test.js"],
+        },
       },
-    },
+      defineWorkersProject({
+        test: {
+          name: "workers",
+          include: ["tests/workers/**/*.test.js"],
+          poolOptions: {
+            workers: { wrangler: { configPath: "./wrangler.jsonc" } },
+          },
+        },
+      }),
+    ],
   },
 });
