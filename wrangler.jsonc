@@ -7,17 +7,16 @@
   "compatibility_flags": ["nodejs_compat"],
 
   // This is a static site: the built output IS the repo root.
-  "pages_build_output_dir": ".",
+  "pages_build_output_dir": "."
 
-  // D1 (SQLite) binding the analytics ingestion Function (#6) will write to.
-  // `database_id` is a placeholder until the DB is created in Cloudflare
-  // (see the activation runbook, #10). Tests never use this id — the Vitest
-  // pool provisions a local, in-memory D1 automatically.
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "analytics",
-      "database_id": "PLACEHOLDER_SET_IN_CLOUDFLARE"
-    }
-  ]
+  // ANALYTICS ACTIVATION (deferred on purpose — see runbook, ticket #10):
+  // The /track Function writes to a D1 binding named `DB`. It is intentionally
+  // NOT declared here yet, so deploys stay clean until the database exists.
+  // Until then /track fails safe (no `DB` binding, nothing is stored).
+  // To activate: run `npx wrangler d1 create analytics`, then add:
+  //   "d1_databases": [
+  //     { "binding": "DB", "database_name": "analytics", "database_id": "<id>" }
+  //   ]
+  // Tests do not use this block — the Vitest pool provides a local D1 (see
+  // vitest.config.js).
 }
