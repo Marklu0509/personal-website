@@ -1,0 +1,15 @@
+# Files that must NOT be published as public static assets.
+.git
+.github
+node_modules
+tests
+src
+migrations
+worker.js
+wrangler.jsonc
+vitest.config.js
+package.json
+package-lock.json
+.gitignore
+.assetsignore
+README.md

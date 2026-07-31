@@ -1,18 +1,17 @@
-// Ingestion endpoint for cookieless, anonymous analytics: POST /track.
+// Ingestion logic for cookieless, anonymous analytics: POST /track.
 //
 // Privacy invariants (enforced here from the first row):
 //   * No IP is ever read or stored.
 //   * `country` comes only from Cloudflare's edge header (request.cf.country).
-//   * `session_id` is supplied by the client — random per page load, held in
+//   * `session_id` is supplied by the client: random per page load, held in
 //     memory, never a cookie or server-set identifier.
 //
-// Fails safe: a visitor beacon never sees a storage error.
+// Fails safe: a visitor beacon never sees a storage error, and when the D1
+// binding is absent (before activation) it simply stores nothing.
 
 const MAX_LEN = 512;
 
-export async function onRequestPost(context) {
-  const { request, env } = context;
-
+export async function handleTrack(request, env) {
   let body;
   try {
     body = await request.json();
@@ -31,11 +30,13 @@ export async function onRequestPost(context) {
   const country = request.cf?.country ?? null;
 
   try {
-    await env.DB.prepare(
-      "INSERT INTO events (session_id, page, country) VALUES (?, ?, ?)",
-    )
-      .bind(session_id, page, country)
-      .run();
+    if (env.DB) {
+      await env.DB.prepare(
+        "INSERT INTO events (session_id, page, country) VALUES (?, ?, ?)",
+      )
+        .bind(session_id, page, country)
+        .run();
+    }
   } catch {
     // Never surface storage failures to the visitor.
     return new Response(null, { status: 204 });

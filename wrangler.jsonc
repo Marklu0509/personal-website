@@ -1,22 +1,27 @@
 {
-  // Cloudflare project config. Read by both `wrangler` (deploy/dev) and the
-  // Vitest workers pool (tests). One file, so tests run against the same
-  // bindings production uses.
+  // Cloudflare Workers config (this project deploys via `npx wrangler deploy`,
+  // i.e. Workers with Static Assets, NOT Pages).
   "name": "personal-website",
   "compatibility_date": "2025-09-06",
   "compatibility_flags": ["nodejs_compat"],
 
-  // This is a static site: the built output IS the repo root.
-  "pages_build_output_dir": "."
+  // The Worker entry. It only handles dynamic routes (e.g. POST /track);
+  // static files are served directly by the assets layer below.
+  "main": "worker.js",
 
-  // ANALYTICS ACTIVATION (deferred on purpose — see runbook, ticket #10):
-  // The /track Function writes to a D1 binding named `DB`. It is intentionally
-  // NOT declared here yet, so deploys stay clean until the database exists.
-  // Until then /track fails safe (no `DB` binding, nothing is stored).
-  // To activate: run `npx wrangler d1 create analytics`, then add:
+  // Serve the repo root as static assets. `.assetsignore` keeps source and
+  // tooling files out of what gets published.
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  }
+
+  // ANALYTICS ACTIVATION (deferred on purpose, see runbook #10):
+  // /track writes to a D1 binding named `DB`, intentionally NOT declared yet
+  // so deploys stay clean until the database exists. Until then /track fails
+  // safe (no `DB` binding, nothing stored). To activate, run
+  // `npx wrangler d1 create analytics`, then add:
   //   "d1_databases": [
   //     { "binding": "DB", "database_name": "analytics", "database_id": "<id>" }
   //   ]
-  // Tests do not use this block — the Vitest pool provides a local D1 (see
-  // vitest.config.js).
 }

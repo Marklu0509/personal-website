@@ -30,8 +30,11 @@ export default defineConfig({
           setupFiles: ["./tests/workers/apply-migrations.js"],
           poolOptions: {
             workers: {
-              wrangler: { configPath: "./wrangler.jsonc" },
+              // Inline miniflare config (not the deploy wrangler.jsonc) so the
+              // pool never tries to bundle the Worker entry or serve assets.
               miniflare: {
+                compatibilityDate: "2025-09-06",
+                compatibilityFlags: ["nodejs_compat"],
                 // Local test-only D1 bound as `DB`. Production binds its own
                 // D1 via wrangler.jsonc once the database is created (#10).
                 d1Databases: { DB: "analytics-test" },
