@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Mark Lu's personal portfolio — static site plus Cloudflare Pages Functions.",
   "scripts": {
+    "build": "echo 'Static site: nothing to build; Cloudflare serves files as-is.'",
     "test": "vitest run",
     "test:watch": "vitest",
     "dev": "wrangler pages dev ."
