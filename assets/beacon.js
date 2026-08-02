@@ -69,7 +69,10 @@ import { accumulateDwell } from "./dwell.js";
             });
           });
         },
-        { threshold: 0.5 },
+        // threshold 0: a section counts as "on screen" whenever any part of
+        // it is in the viewport. (A higher threshold would record zero dwell
+        // for sections taller than the viewport, which never reach it.)
+        { threshold: 0 },
       );
       sections.forEach(function (el) {
         io.observe(el);
