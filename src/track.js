@@ -31,11 +31,30 @@ export async function handleTrack(request, env) {
 
   try {
     if (env.DB) {
-      await env.DB.prepare(
-        "INSERT INTO events (session_id, page, country) VALUES (?, ?, ?)",
-      )
-        .bind(session_id, page, country)
-        .run();
+      if (Array.isArray(body.sections)) {
+        // Batched per-section dwell: one row per section.
+        const stmt = env.DB.prepare(
+          "INSERT INTO events (session_id, page, country, section, dwell_ms) VALUES (?, ?, ?, ?, ?)",
+        );
+        const inserts = [];
+        for (const s of body.sections) {
+          const section =
+            typeof s?.section === "string" ? s.section.slice(0, MAX_LEN) : null;
+          const dwell_ms = Number(s?.dwell_ms);
+          if (!section || !Number.isFinite(dwell_ms) || dwell_ms < 0) continue;
+          inserts.push(
+            stmt.bind(session_id, page, country, section, Math.round(dwell_ms)),
+          );
+        }
+        if (inserts.length) await env.DB.batch(inserts);
+      } else {
+        // Pageview.
+        await env.DB.prepare(
+          "INSERT INTO events (session_id, page, country) VALUES (?, ?, ?)",
+        )
+          .bind(session_id, page, country)
+          .run();
+      }
     }
   } catch {
     // Never surface storage failures to the visitor.

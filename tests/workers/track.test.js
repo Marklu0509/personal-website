@@ -70,4 +70,62 @@ describe("POST /track ingestion", () => {
     const res = await handleTrack(req({ session_id: "s", page: "/" }), {});
     expect(res.status).toBe(204);
   });
+
+  it("writes one row per section for a batched dwell payload", async () => {
+    const res = await handleTrack(
+      req({
+        session_id: "sess1",
+        page: "/index.html",
+        sections: [
+          { section: "about", dwell_ms: 4200 },
+          { section: "experience", dwell_ms: 1800 },
+        ],
+      }),
+      env,
+    );
+    expect(res.status).toBe(204);
+
+    const out = await env.DB.prepare(
+      "SELECT session_id, page, section, dwell_ms FROM events ORDER BY section",
+    ).all();
+    expect(out.results).toEqual([
+      { session_id: "sess1", page: "/index.html", section: "about", dwell_ms: 4200 },
+      { session_id: "sess1", page: "/index.html", section: "experience", dwell_ms: 1800 },
+    ]);
+  });
+
+  it("skips invalid section entries and rounds dwell", async () => {
+    await handleTrack(
+      req({
+        session_id: "s",
+        page: "/",
+        sections: [
+          { section: "ok", dwell_ms: 10.7 },
+          { section: "bad", dwell_ms: -5 },
+          { section: 123, dwell_ms: 100 },
+          { dwell_ms: 100 },
+        ],
+      }),
+      env,
+    );
+    const out = await env.DB.prepare(
+      "SELECT section, dwell_ms FROM events",
+    ).all();
+    expect(out.results).toEqual([{ section: "ok", dwell_ms: 11 }]);
+  });
+
+  it("reconstructs a session's page journey in order", async () => {
+    await handleTrack(req({ session_id: "j", page: "/index.html" }), env);
+    await handleTrack(req({ session_id: "j", page: "/projects.html" }), env);
+    await handleTrack(req({ session_id: "j", page: "/project-myopia.html" }), env);
+
+    const out = await env.DB.prepare(
+      "SELECT page FROM events WHERE session_id = 'j' AND section IS NULL ORDER BY id",
+    ).all();
+    expect(out.results.map((r) => r.page)).toEqual([
+      "/index.html",
+      "/projects.html",
+      "/project-myopia.html",
+    ]);
+  });
 });
