@@ -5,9 +5,13 @@
 //     flushes one batched dwell payload when the page is hidden or unloaded.
 // Must never block rendering or throw into the page.
 import { accumulateDwell } from "./dwell.js";
+import { updateAndCheckOptOut } from "./optout.js";
 
 (function () {
   try {
+    // The site owner's own visits (flagged once via ?me=1) are never counted.
+    if (updateAndCheckOptOut(location.search, window.localStorage)) return;
+
     var sessionId =
       (window.crypto && crypto.randomUUID && crypto.randomUUID()) ||
       Date.now().toString(36) + Math.random().toString(16).slice(2);

@@ -9,9 +9,19 @@
 // Fails safe: a visitor beacon never sees a storage error, and when the D1
 // binding is absent (before activation) it simply stores nothing.
 
+import { isBot } from "./filters.js";
+
 const MAX_LEN = 512;
 
 export async function handleTrack(request, env) {
+  const ua =
+    (request.headers && request.headers.get && request.headers.get("user-agent")) ||
+    "";
+  if (isBot(ua)) {
+    // Drop bots/crawlers silently; keep human engagement data clean.
+    return new Response(null, { status: 204 });
+  }
+
   let body;
   try {
     body = await request.json();

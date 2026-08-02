@@ -4,8 +4,12 @@ import { handleTrack } from "../../src/track.js";
 
 // Build a request-like object the way the Worker passes it to handleTrack.
 // `cf.country` stands in for Cloudflare's edge geo header; no IP is ever passed.
-function req(bodyObj, { country = "AU", badJson = false } = {}) {
+const HUMAN_UA =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36";
+
+function req(bodyObj, { country = "AU", badJson = false, ua = HUMAN_UA } = {}) {
   return {
+    headers: { get: (h) => (h.toLowerCase() === "user-agent" ? ua : null) },
     json: () =>
       badJson ? Promise.reject(new Error("bad")) : Promise.resolve(bodyObj),
     cf: { country },
@@ -112,6 +116,21 @@ describe("POST /track ingestion", () => {
       "SELECT section, dwell_ms FROM events",
     ).all();
     expect(out.results).toEqual([{ section: "ok", dwell_ms: 11 }]);
+  });
+
+  it("drops bot/crawler user-agents and writes nothing", async () => {
+    const res = await handleTrack(
+      req({ session_id: "b", page: "/" }, { ua: "Googlebot/2.1" }),
+      env,
+    );
+    expect(res.status).toBe(204);
+    expect(await rows()).toHaveLength(0);
+  });
+
+  it("drops requests with no user-agent and writes nothing", async () => {
+    const res = await handleTrack(req({ session_id: "b", page: "/" }, { ua: "" }), env);
+    expect(res.status).toBe(204);
+    expect(await rows()).toHaveLength(0);
   });
 
   it("reconstructs a session's page journey in order", async () => {
