@@ -38,8 +38,15 @@ import { updateAndCheckOptOut } from "./optout.js";
       }
     }
 
-    // Pageview.
-    send({ session_id: sessionId, page: page });
+    // Pageview (with external referrer host only, if any).
+    var referrer = "";
+    try {
+      if (document.referrer) {
+        var h = new URL(document.referrer).hostname;
+        if (h && h !== location.hostname) referrer = h;
+      }
+    } catch (e) {}
+    send({ session_id: sessionId, page: page, referrer: referrer });
 
     // Section dwell.
     var sections = Array.prototype.slice.call(

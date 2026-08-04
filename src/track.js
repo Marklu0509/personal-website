@@ -59,10 +59,14 @@ export async function handleTrack(request, env) {
         if (inserts.length) await env.DB.batch(inserts);
       } else {
         // Pageview.
+        const referrer =
+          typeof body.referrer === "string" && body.referrer
+            ? body.referrer.slice(0, MAX_LEN)
+            : null;
         await env.DB.prepare(
-          "INSERT INTO events (session_id, page, country) VALUES (?, ?, ?)",
+          "INSERT INTO events (session_id, page, country, referrer) VALUES (?, ?, ?, ?)",
         )
-          .bind(session_id, page, country)
+          .bind(session_id, page, country, referrer)
           .run();
       }
     }

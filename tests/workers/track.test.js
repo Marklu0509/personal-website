@@ -118,6 +118,17 @@ describe("POST /track ingestion", () => {
     expect(out.results).toEqual([{ section: "ok", dwell_ms: 11 }]);
   });
 
+  it("stores the referrer host on a pageview", async () => {
+    await handleTrack(
+      req({ session_id: "r", page: "/", referrer: "linkedin.com" }),
+      env,
+    );
+    const row = await env.DB.prepare(
+      "SELECT referrer FROM events WHERE session_id = 'r'",
+    ).first();
+    expect(row.referrer).toBe("linkedin.com");
+  });
+
   it("drops bot/crawler user-agents and writes nothing", async () => {
     const res = await handleTrack(
       req({ session_id: "b", page: "/" }, { ua: "Googlebot/2.1" }),

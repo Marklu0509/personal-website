@@ -13,7 +13,11 @@
   // tooling files out of what gets published.
   "assets": {
     "directory": ".",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // Force these dynamic routes to the Worker first (otherwise a GET with no
+    // matching asset is answered by the assets 404 without running the Worker).
+    // Everything else is served straight from assets, keeping _headers rules.
+    "run_worker_first": ["/track", "/stats"]
   }
 
   // ANALYTICS ACTIVATION (deferred on purpose, see runbook #10):

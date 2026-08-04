@@ -1,4 +1,5 @@
 import { handleTrack } from "./src/track.js";
+import { handleStats } from "./src/stats.js";
 
 // Workers entry. Static files are served by the assets layer before this runs,
 // so the Worker only sees dynamic routes. Anything it doesn't handle falls
@@ -12,6 +13,10 @@ export default {
         return new Response("Method Not Allowed", { status: 405 });
       }
       return handleTrack(request, env);
+    }
+
+    if (url.pathname === "/stats") {
+      return handleStats(request, env);
     }
 
     return env.ASSETS.fetch(request);
