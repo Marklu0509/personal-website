@@ -3,9 +3,6 @@
 .github
 node_modules
 tests
-src
-migrations
-worker.js
 wrangler.jsonc
 vitest.config.js
 package.json
@@ -13,4 +10,3 @@ package-lock.json
 .gitignore
 .assetsignore
 README.md
-RUNBOOK.md

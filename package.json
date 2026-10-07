@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Mark Lu's personal portfolio — static site plus Cloudflare Pages Functions.",
+  "description": "Mark Lu's personal portfolio: a static site on Cloudflare Workers Static Assets.",
   "scripts": {
     "build": "echo 'Static site: nothing to build; Cloudflare serves files as-is.'",
     "test": "vitest run",
@@ -11,7 +11,6 @@
     "dev": "wrangler dev"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.8.71",
     "vitest": "^3.2.4",
     "wrangler": "^4.115.0"
   }
