@@ -1,31 +1,11 @@
 {
   // Cloudflare Workers config (this project deploys via `npx wrangler deploy`,
-  // i.e. Workers with Static Assets, NOT Pages).
+  // i.e. Workers Static Assets, NOT Pages). Plain static site: no Worker code
+  // and no bindings. `.assetsignore` keeps source and tooling files out of
+  // what gets published.
   "name": "personal-website",
   "compatibility_date": "2025-09-06",
-  "compatibility_flags": ["nodejs_compat"],
-
-  // The Worker entry. It only handles dynamic routes (e.g. POST /track);
-  // static files are served directly by the assets layer below.
-  "main": "worker.js",
-
-  // Serve the repo root as static assets. `.assetsignore` keeps source and
-  // tooling files out of what gets published.
   "assets": {
-    "directory": ".",
-    "binding": "ASSETS",
-    // Force these dynamic routes to the Worker first (otherwise a GET with no
-    // matching asset is answered by the assets 404 without running the Worker).
-    // Everything else is served straight from assets, keeping _headers rules.
-    "run_worker_first": ["/track", "/stats"]
-  },
-
-  // Analytics store. The Worker writes/reads via `env.DB`.
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "analytics",
-      "database_id": "7f1c7ec0-76b4-4dd9-89b3-d320b552aecd"
-    }
-  ]
+    "directory": "."
+  }
 }

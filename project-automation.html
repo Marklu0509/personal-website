@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Foresight — World-Event Forecast Tracker — Mark Lu</title>
+<title>World-Event Forecast Tracker — Mark Lu</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="about-page">
@@ -25,8 +25,8 @@
     </header>
 
     <section class="wrap proj-hero detail-hero">
-      <p class="headline">Foresight &mdash; World-Event Forecast Tracker</p>
-      <p class="proj-sub">Foresight follows proven analysts and mirrors their calls on real-world events like ceasefires, elections, and rate decisions, so you're always positioned on what they see coming.</p>
+      <p class="headline">World-Event Forecast Tracker</p>
+      <p class="proj-sub">Watches a live prediction market and reacts within seconds when a tracked account changes position.</p>
     </section>
   </div>
 
@@ -35,8 +35,8 @@
     <section class="detail">
       <div class="detail-info">
         <h2 class="detail-title">Project Info</h2>
-        <div class="fact"><span class="k">Date</span><span class="v">2025</span></div>
-        <div class="fact"><span class="k">Access</span><span class="v">Private service — walkthrough on request</span></div>
+        <div class="fact"><span class="k">Date</span><span class="v">Mar &ndash; Jun 2026</span></div>
+        <div class="fact"><span class="k">Access</span><span class="v">Private service, walkthrough on request</span></div>
         <div class="fact"><span class="k">Stack</span>
           <div class="stack-cats">
             <div class="stack-cat"><span class="sk">Language</span><span class="sv">Python</span></div>
@@ -51,22 +51,16 @@
 
       <div class="detail-main">
         <figure class="shot">
-          <img src="assets/pcopbot.png" alt="Foresight forecast activity table">
+          <img src="assets/pcopbot.png" alt="Forecast tracker activity table">
           <figcaption>Forecast Activity: every mirrored call on real-world events, logged with side, entry price, and size.</figcaption>
         </figure>
         <div class="detail-body">
           <div class="detail-block">
             <h3 class="detail-h">Features</h3>
             <ul>
-              <li><strong>Follow the sharp money</strong>: auto-mirror any forecaster's positions the moment they move.</li>
-              <li><strong>Size on your terms</strong>: match their conviction as a fixed amount or a % of their stake.</li>
-              <li><strong>Smart aggregation</strong>: when a forecaster builds a position in many small steps, Foresight bundles them into one clean entry at the average price, so you skip the noise and avoid over-firing.</li>
-              <li><strong>Built-in guardrails</strong>: price limits, per-event caps, and spend limits keep every position in check.</li>
-              <li><strong>Lock in gains automatically</strong>: tiered take-profit and stop-loss exit for you at the right time.</li>
-              <li><strong>Full transparency</strong>: every forecast, entry, and realized result logged in one place.</li>
               <li><strong>Always-on ingestion</strong>: processes a live event feed continuously, 24/7, without dropping or duplicating anything.</li>
-              <li><strong>Crash-resilient</strong>: recovers cleanly from restarts and crashes with no manual intervention.</li>
-              <li><strong>Real-time visibility</strong>: surfaces incidents within seconds instead of hours.</li>
+              <li><strong>Built-in guardrails</strong>: price limits, per-event caps, and spend limits keep every position in check.</li>
+              <li><strong>Full transparency</strong>: every forecast, entry, and realized result logged in one place.</li>
             </ul>
           </div>
           <div class="detail-block">
@@ -80,14 +74,11 @@
           <div class="detail-block">
             <h3 class="detail-h">Core technical</h3>
             <ul>
-              <li><strong>Exactly-once processing</strong>: guarantees exactly-once handling across restarts via database-level idempotency, so no event is lost or double-counted.</li>
-              <li><strong>Reliability engineering</strong>: raised success rate from 71% to 99.7% by reverse-engineering a hidden upstream API rule from structured logs.</li>
-              <li><strong>Monitoring-as-code</strong>: cut incident detection from hours to under 90 seconds with Prometheus/Grafana alerting that fires even on a crash.</li>
-              <li><strong>Event-driven mirroring</strong>: a continuous poll loop detects each tracked wallet's moves within sub-second intervals and mirrors them via the CLOB API, with a per-source watermark guaranteeing exactly-once handling across restarts.</li>
-              <li><strong>Deterministic sizing &amp; execution</strong>: trades are sized as a fixed amount or a % of the source's stake, routed as fill-or-kill or good-till-cancel orders with configurable slippage and automatic market fallback.</li>
-              <li><strong>Pre-trade risk engine</strong>: every order passes a cap-first-then-reject chain of price bands, per-trade/per-market limits, and spend ceilings before execution.</li>
-              <li><strong>Fill aggregation</strong>: fragmented fills are accumulated in a sliding window and fired as one combined order at the volume-weighted average price, cutting order count, fees, and slippage.</li>
-              <li><strong>Automated exits</strong>: a monitor handles tiered take-profit, stop-loss, mirrored exits, and on-chain redemption, closing the full lifecycle from entry to settlement automatically.</li>
+              <li><strong>Raised request success rate from 71% to 99.7%</strong> by reverse-engineering a hidden upstream API rule from logs.</li>
+              <li><strong>Cut incident detection from hours to under 90s</strong> with Prometheus/Grafana alerts that fire even on a crash.</li>
+              <li><strong>Cut processing overhead 87%</strong> by batching fragmented events into single requests.</li>
+              <li><strong>Guaranteed zero event loss or double-counting across restarts</strong> with database-level idempotency.</li>
+              <li><strong>Made the service recover from hangs on its own</strong>, with a health check that fails when the poll loop stalls.</li>
             </ul>
           </div>
         </div>
@@ -103,6 +94,5 @@
       </div>
     </div>
   </footer>
-  <script type="module" src="assets/beacon.js"></script>
 </body>
 </html>
