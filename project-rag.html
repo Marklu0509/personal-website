@@ -26,7 +26,7 @@
 
     <section class="wrap proj-hero detail-hero">
       <p class="headline">Threat-Intel RAG: Cited Q&amp;A over MITRE ATT&amp;CK</p>
-      <p class="proj-sub">Answers security questions from MITRE ATT&amp;CK, cites a source for every sentence, and refuses when it can't.</p>
+      <p class="proj-sub">Ask MITRE ATT&amp;CK in English or Chinese and get an answer where every sentence cites its source, or a clear refusal when the sources can't back one.</p>
     </section>
   </div>
 
@@ -38,9 +38,12 @@
         <div class="fact"><span class="k">Date</span><span class="v">Sep &ndash; Oct 2026</span></div>
         <div class="fact"><span class="k">Stack</span>
           <div class="stack-cats">
-            <div class="stack-cat"><span class="sk">Language</span><span class="sv">Python</span></div>
-            <div class="stack-cat"><span class="sk">Retrieval</span><span class="sv">ChromaDB</span></div>
-            <div class="stack-cat"><span class="sk">Models</span><span class="sv">LLM APIs</span></div>
+            <div class="stack-cat"><span class="sk">Language</span><span class="sv">Python · JavaScript</span></div>
+            <div class="stack-cat"><span class="sk">Retrieval</span><span class="sv">BM25 · bge-m3 embeddings · ChromaDB</span></div>
+            <div class="stack-cat"><span class="sk">LLM</span><span class="sv">Qwen via Groq / OpenRouter · structured output</span></div>
+            <div class="stack-cat"><span class="sk">Serving</span><span class="sv">FastAPI · Docker</span></div>
+            <div class="stack-cat"><span class="sk">Deploy</span><span class="sv">Azure Container Apps · GitHub Pages · GitHub Actions</span></div>
+            <div class="stack-cat"><span class="sk">Testing</span><span class="sv">pytest · Playwright · LLM-as-judge</span></div>
           </div>
         </div>
         <a class="detail-btn filled" href="https://rag.marklu.page/" target="_blank" rel="noopener">Visit the website</a>
@@ -49,11 +52,42 @@
       </div>
 
       <div class="detail-main">
+        <div class="carousel" data-carousel>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="assets/rag_hero.jpg" alt="The question box with suggested questions" data-caption="Ask in English or Chinese, or start from a suggestion; each one shows a different behaviour."></div>
+              <div class="carousel-slide"><img src="assets/rag_retired_id.jpg" alt="An answer about a retired technique ID with its cited source" data-caption="A retired ID (T1086) is rewritten before searching. Every sentence has a footnote, and each source opens on attack.mitre.org."></div>
+              <div class="carousel-slide"><img src="assets/rag_two_sources.jpg" alt="A comparison answer citing two techniques" data-caption="One answer drawing on two techniques: sentences that compare them cite both passages."></div>
+              <div class="carousel-slide"><img src="assets/rag_poisoned.jpg" alt="A recorded attack where a poisoned passage gets through" data-caption="A poisoned passage with one planted line. Without defenses the answer recommends the fake product; with defenses it cites only the real passage."></div>
+              <div class="carousel-slide"><img src="assets/rag_evaluation.jpg" alt="Evaluation results" data-caption="Measured on 78 hand-written questions and 70 attacks per configuration."></div>
+            </div>
+            <button class="carousel-btn prev" type="button" aria-label="Previous image">&lsaquo;</button>
+            <button class="carousel-btn next" type="button" aria-label="Next image">&rsaquo;</button>
+          </div>
+          <p class="carousel-caption"></p>
+          <div class="carousel-dots"></div>
+        </div>
         <div class="detail-body">
-          <!-- TODO(Mark): replace this placeholder with the full write-up (Features / Why I built it / Core technical). -->
           <div class="detail-block">
-            <h3 class="detail-h">Write-up</h3>
-            <p>A full write-up is on the way. In the meantime, try the live demo or browse the code on GitHub.</p>
+            <h3 class="detail-h">Features</h3>
+            <ul>
+              <li>Ask about any ATT&amp;CK technique in English or Chinese. Every sentence links to the passage it came from, and each source opens on the official ATT&amp;CK site.</li>
+              <li>When the sources can't back an answer, it says so instead of guessing: off-topic questions, questions about threat groups, or data ATT&amp;CK doesn't hold.</li>
+              <li>Shows its work: how each answer was found, a judge's verdict on every recorded sentence, and the failures and attacks it doesn't stop.</li>
+            </ul>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Why I built it</h3>
+            <p>I wanted to understand security better, and I learn best by building something real. MITRE ATT&amp;CK turned out to be ideal material: it's the shared language defenders use to describe attacker behaviour, it's public and well structured, and its look-alike technique IDs make search genuinely hard. Working with it meant reading it closely, and it let me take on a question I care about: can an AI assistant be trusted to say only what its sources support, and how would you prove it?</p>
+          </div>
+          <div class="detail-block">
+            <h3 class="detail-h">Core technical</h3>
+            <ul>
+              <li>Raised top-5 retrieval accuracy from <strong>47% to 83%</strong> with <strong>hybrid search</strong> (BM25 plus multilingual embeddings) and query understanding that rewrites retired IDs and routes named techniques.</li>
+              <li>Made every sentence cite its source with <strong>structured output</strong> and a citation check. An <strong>LLM judge</strong>, validated against my own blind labels (&kappa; 0.87), found <strong>99.2%</strong> of sentences fully supported; 24 of 25 out-of-scope questions were refused.</li>
+              <li>Tested <strong>prompt injection and RAG poisoning</strong> on isolated copies of the index: successful attacks fell from 39 of 70 with free-form answers to 7 with structured output, and to at most 2 with defenses across two runs.</li>
+              <li>Shipped it on <strong>Azure Container Apps</strong> with a <strong>GitHub Actions</strong> pipeline that signs in with OIDC (no stored secrets), smoke-tests every release and rolls back on failure; 209 unit tests and 13 browser tests.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -68,5 +102,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="assets/carousel.js"></script>
 </body>
 </html>
