@@ -26,7 +26,7 @@
 
     <section class="wrap proj-hero detail-hero">
       <p class="headline">World-Event Forecast Tracker</p>
-      <p class="proj-sub">Watches a live prediction market and reacts within seconds when a tracked account changes position.</p>
+      <p class="proj-sub">Watches a live prediction market and reacts when a tracked account changes position.</p>
     </section>
   </div>
 
@@ -58,7 +58,6 @@
           <div class="detail-block">
             <h3 class="detail-h">Features</h3>
             <ul>
-              <li><strong>Always-on ingestion</strong>: processes a live event feed continuously, 24/7, without dropping or duplicating anything.</li>
               <li><strong>Built-in guardrails</strong>: price limits, per-event caps, and spend limits keep every position in check.</li>
               <li><strong>Full transparency</strong>: every forecast, entry, and realized result logged in one place.</li>
             </ul>
@@ -69,14 +68,11 @@
           </div>
           <figure class="shot">
             <img src="assets/grafana.png" alt="Grafana alert firing and resolving in Discord">
-            <figcaption>Monitoring-as-code: a Grafana alert fires to Discord within 90 seconds if the bot stops polling, even on a crash, and auto-resolves when it recovers.</figcaption>
+            <figcaption>Monitoring-as-code: a Grafana alert fires to Discord if the bot stops polling, and auto-resolves when it recovers.</figcaption>
           </figure>
           <div class="detail-block">
             <h3 class="detail-h">Core technical</h3>
             <ul>
-              <li><strong>Raised request success rate from 71% to 99.7%</strong> by reverse-engineering a hidden upstream API rule from logs.</li>
-              <li><strong>Cut incident detection from hours to under 90s</strong> with Prometheus/Grafana alerts that fire even on a crash.</li>
-              <li><strong>Cut processing overhead 87%</strong> by batching fragmented events into single requests.</li>
               <li><strong>Guaranteed zero event loss or double-counting across restarts</strong> with database-level idempotency.</li>
               <li><strong>Made the service recover from hangs on its own</strong>, with a health check that fails when the poll loop stalls.</li>
             </ul>
